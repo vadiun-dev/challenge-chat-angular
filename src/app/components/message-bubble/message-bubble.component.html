@@ -1,0 +1,36 @@
+<div class="chat-message">
+  <div class="flex items-end" [ngClass]="{ 'justify-end': !message.reversed }">
+    <div
+      class="flex flex-col space-y-2 text-xs max-w-xs mx-2"
+      [ngClass]="{
+        'order-2': message.reversed,
+        'items-start': message.reversed,
+        'order-1': !message.reversed,
+        'items-end': !message.reversed
+      }"
+    >
+      <div>
+        <span
+          class="px-4 py-2 rounded-lg inline-block rounded-br-none"
+          [ngClass]="{
+            'bg-gray-300': message.reversed,
+            'text-gray-600': message.reversed,
+            'bg-blue-600': !message.reversed,
+            'text-white': !message.reversed
+          }"
+        >
+          {{ message.text }}
+        </span>
+      </div>
+    </div>
+    <div
+      [ngClass]="{ 'order-1': message.reversed, 'order-2': !message.reversed }"
+    >
+      <app-avatar
+        size="small"
+        [showLiveIndicator]="false"
+        src="https://images.unsplash.com/photo-1590031905470-a1a1feacbb0b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
+      />
+    </div>
+  </div>
+</div>

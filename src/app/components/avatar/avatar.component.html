@@ -1,0 +1,14 @@
+<div class="relative">
+  <span
+    *ngIf="showLiveIndicator"
+    class="absolute text-green-500 right-0 bottom-0"
+  >
+    <svg width="20" height="20">
+      <circle cx="8" cy="8" r="8" fill="currentColor"></circle>
+    </svg>
+  </span>
+  <img [src]="src" alt="" class="rounded-full" [ngClass]="{
+    'w-6 h-6': size === 'small',
+    'w-16 h-16': size !== 'small',
+  }" />
+</div>
