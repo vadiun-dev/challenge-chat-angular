@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'app-background': "url('/assets/background.webp')"
-      }
+        "app-background": "url('/assets/background.webp')",
+      },
     },
   },
   plugins: [],

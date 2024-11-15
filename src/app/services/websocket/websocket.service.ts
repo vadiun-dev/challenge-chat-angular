@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Socket } from 'socket.io';
-import { enviroment } from 'src/enviroments/enviroment';
+import { io, Socket } from 'socket.io-client';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WebsocketService {
-  private webSocket!: WebSocket;
+  private webSocket!: Socket;
 
-  constructor() {}
+  constructor() {
+    this.init();
+  }
 
   init() {
-    this.webSocket = new WebSocket(enviroment.apiUrl);
+    this.webSocket = io('http://localhost:3000');
+  }
 
-    this.webSocket.onopen = () => console.log("Websocket conectado");
-    this.webSocket.onmessage = (ev) => console.log("Message", ev)
+  getConnection() {
+    return this.webSocket;
   }
 }

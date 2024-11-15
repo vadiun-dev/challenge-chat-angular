@@ -1,31 +1,29 @@
 <div class="chat-message">
-  <div class="flex items-end" [ngClass]="{ 'justify-end': !message.reversed }">
+  <div class="flex items-end" [ngClass]="{ 'justify-end': !reversed }">
     <div
       class="flex flex-col space-y-2 text-xs max-w-xs mx-2"
       [ngClass]="{
-        'order-2': message.reversed,
-        'items-start': message.reversed,
-        'order-1': !message.reversed,
-        'items-end': !message.reversed
+        'order-2': reversed,
+        'items-start': reversed,
+        'order-1': !reversed,
+        'items-end': !reversed
       }"
     >
       <div>
         <span
           class="px-4 py-2 rounded-lg inline-block rounded-br-none"
           [ngClass]="{
-            'bg-gray-300': message.reversed,
-            'text-gray-600': message.reversed,
-            'bg-blue-600': !message.reversed,
-            'text-white': !message.reversed
+            'bg-gray-300': reversed,
+            'text-gray-600': reversed,
+            'bg-blue-600': !reversed,
+            'text-white': !reversed
           }"
         >
-          {{ message.text }}
+          {{ message.message }}
         </span>
       </div>
     </div>
-    <div
-      [ngClass]="{ 'order-1': message.reversed, 'order-2': !message.reversed }"
-    >
+    <div [ngClass]="{ 'order-1': reversed, 'order-2': !reversed }">
       <app-avatar
         size="small"
         [showLiveIndicator]="false"

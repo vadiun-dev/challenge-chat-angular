@@ -1,5 +1,17 @@
-<app-common-layout>
-  <app-chat-view-header />
-  <app-chat-view-message-list />
-  <app-chat-view-footer />
-</app-common-layout>
+<div *ngIf="messages.length > 0; else start">
+  <app-common-layout>
+    <app-chat-view-header />
+    <app-chat-view-message-list [messages]="messages" />
+    <app-chat-view-footer (onMessageSent)="sendMessage($event)" />
+  </app-common-layout>
+</div>
+<ng-template #start>
+  <div class="items-center flex justify-center min-h-full">
+    <button
+      class="bg-blue-500 text-white rounded-sm py-2 px-4"
+      (click)="createNewChat()"
+    >
+      Start new chat
+    </button>
+  </div>
+</ng-template>
