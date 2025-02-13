@@ -27,13 +27,14 @@ export class ChatService {
     const newId = uuidv4();
     this.wsSrv.getConnection().emit('initialize_chat', newId);
     localStorage.setItem('uuid', newId);
+    this.loadChatMessages();
     return newId;
   };
 
-  initializeChat = () => {
+  loadChatMessages = () => {
     var uuid = localStorage.getItem('uuid');
     if (uuid === null) {
-      uuid = this.createNewChat();
+      return;
     }
     fetch('http://localhost:3000/messages/' + uuid)
       .then((res) => res.json())
@@ -59,7 +60,7 @@ export class ChatService {
       this.setMessages([...msg, data]);
     });
 
-    this.initializeChat();
+    this.loadChatMessages();
 
     this.wsSrv.getConnection().on('writing', () => this.setStatus('waiting'));
   };
